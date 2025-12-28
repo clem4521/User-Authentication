@@ -21,9 +21,10 @@ function register(req,res){
 			conn.query(data,[username,email,hash],(error,results)=>{
 			    if(error){
 			        console.error(error);
+			        res.status(500).json({"error":error});
 			        return;
 			    };
-			    res.send(hash);
+			    res.send("Account was successfully created");
 			});
 			conn.end();
 		});
